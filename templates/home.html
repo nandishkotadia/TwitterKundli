@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<style>
+		@font-face {
+    font-family: 'Indie';
+    src:url('IndieFlower.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+	}
+	/**
+ * Profile image component
+ */
+.profile-header-container{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.profile-header-img {
+    /*padding: 54px;*/
+}
+
+.profile-header-img > img.img-circle {
+    width: 120px;
+    height: 120px;
+    border: 2px solid #51D2B7;
+}
+
+.profile-header {
+    	margin-top: 43px;
+}
+
+/**
+ * Ranking component
+ */
+.rank-label-container {
+    margin-top: -19px;
+    /* z-index: 1000; */
+    text-align: center;
+}
+
+.label.label-default.rank-label {
+    background-color: rgb(81, 210, 183);
+    padding: 5px 10px 5px 10px;
+    border-radius: 27px;
+}
+.twit_block:hover
+{
+	box-shadow: 0px 0px 5px #aaa;
+}
+nav.navbar-findcond { background: #fff;  }
+nav.navbar-findcond a { color: #f14444; }
+nav.navbar-findcond ul.navbar-nav a { color: #f14444; border-style: solid; border-width: 0 0 2px 0; border-color: #fff; }
+nav.navbar-findcond ul.navbar-nav a:hover,
+nav.navbar-findcond ul.navbar-nav a:visited,
+nav.navbar-findcond ul.navbar-nav a:focus,
+nav.navbar-findcond ul.navbar-nav a:active { background: #fff;}
+nav.navbar-findcond ul.navbar-nav a:focus { border-color: #222;}
+nav.navbar-findcond ul.navbar-nav a:hover { border-color: #f14444; }
+nav.navbar-findcond li.divider { background: #ccc; }
+nav.navbar-findcond button.navbar-toggle { background: #f14444; border-radius: 2px; }
+nav.navbar-findcond button.navbar-toggle:hover { background: #999; }
+nav.navbar-findcond button.navbar-toggle > span.icon-bar { background: #fff; }
+
+nav.navbar-findcond span.badge { background: #f14444; font-weight: normal; font-size: 11px; margin: 0 4px; }
+nav.navbar-findcond span.badge.new { background: rgba(255, 0, 0, 0.8); color: #fff; }
+	</style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Twitter Kundli | Login</title>
+
+	<!-- CSS -->
+<!-- CSS -->
+	<link href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+	<link href="{% static 'assets/css/font-awesome.min.css' %}" rel="stylesheet" media="screen">
+	<link href="{% static 'assets/css/simple-line-icons.css' %}" rel="stylesheet" media="screen">
+	<link href="{% static 'assets/css/animate.css' %}" rel="stylesheet">
+
+	<!-- Custom styles CSS -->
+	<link href="{% static 'assets/css/style.css' %}" rel="stylesheet" media="screen">
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script src="{% static 'assets/js/modernizr.custom.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendor/raphael.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendor/jquery-1.8.2.js' %}"></script>
+    <script type="text/javascript" src="{% static 'lib/dracula_graffle.js' %}"></script>
+    <script type="text/javascript" src="{% static 'lib/dracula_graph.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendor/example.js' %}"></script>
+
+       
+</head>
+<body style='background-image: url("{% static 'assets/images/noisy_grid.png' %}")'>
+	<!-- Preloader -->
+    <div id="username" style="display: none;">
+        {{ username }}
+    </div>
+	<div id="preloader">
+		<div id="status"></div>
+	</div>	
+	<!-- Navigation start -->
+
+	<header class="header">
+
+		<nav class="navbar navbar-custom" role="navigation">
+
+			<div class="container">
+
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#custom-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html" style="font-family:myriad;">Twitter Kundli</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="custom-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#zzz"></a></li>
+						<li><a href="#services">Home</a></li>
+                        <li><a href="#network">Network</a></li>
+                        <li><a href="#interests">Interests</a></li>
+                        <li><a href="#features">Features</a></li>
+						<li><a href="#timeline">Timeline</a></li>
+					</ul>
+				</div>
+
+			</div><!-- .container -->
+
+		</nav>
+
+	</header>
+
+	<!-- Navigation end -->
+
+	<div class="container">
+		
+
+		<section id="services" class="pfblock" style="padding-top: 60px;">
+		<div class="row" style="background-color:#fff;border:1px solid #fff;margin:10px; !important">
+            <h3 class="top-quotes" style="text-align:center;color:#999;">Trending tweets</h3>
+            <div class="pfblock-line" style="margin:5px auto;"></div>
+			<div id="cbp-qtrotator" class="cbp-qtrotator">
+                <div class="cbp-qtcontent">
+                    <blockquote>
+                      <p id="top1">Work with John was a pleasure. He understood exactly what I wanted and created an awesome site for my company.</p>
+                      <footer >Number of times retweeted: 76</footer>
+                    </blockquote>
+                </div>
+                <div class="cbp-qtcontent">
+                    <blockquote>
+                      <p id="top2">I'm really happy with the results. Get 100% satisfaction is difficult but Alex got it without problems.</p>
+                      <footer id="retimes2">Number of times retweeted: 46</footer>
+                    </blockquote>
+                </div>
+                <div class="cbp-qtcontent">
+                    <blockquote>
+                      <p id="top3">Work with John was a pleasure. He understood exactly what I wanted and created an awesome site for my company.</p>
+                      <footer id="retimes3">Number of times retweeted: 81</footer>
+                    </blockquote>
+                </div>
+                <div class="cbp-qtcontent">
+                    <blockquote>
+                      <p id="top4">I'm really happy with the results. Get 100% satisfaction is difficult but Alex got it without problems.</p>
+                      <footer id="retimes4">Number of times retweeted: 97</footer>
+                    </blockquote>
+                </div>
+                <div class="cbp-qtcontent">
+                    <blockquote>
+                      <p id="top5">Work with John was a pleasure. He understood exactly what I wanted and created an awesome site for my company.</p>
+                      <footer id="retimes5">Number of times retweeted: 186</footer>
+                    </blockquote>
+                </div>
+
+            </div>
+
+        </div><!-- .row -->
+
+		<div class="row" style="margin:0px; !important">
+		<div class="col-md-4 panel panel-primary twit_block" style="color:#222;border:1px solid #bbb;border-radius:0px;">
+			  <div class="panel-body" id="banner">
+				<div class="profile-header-container">   
+	    		<div class="profile-header-img">
+	                <img class="img-circle" src="{% static 'assets/images/nopicture.jpg' %}" alt="Alt image" id="profile_url"/>
+	                <!-- badge -->
+	                <div class="rank-label-container">
+	                    <span class="label label-default rank-label" id="screen_name">John Doe</span>
+                    </div>
+	            </div>
+	        	</div> 
+			  </div>
+			  <div class="pfblock-line" style="margin:5px auto;"></div>
+               <div>
+                    <h3 style="text-align:center;color:#222;font-size:13px;" id="name" class="Name"></h3>
+                    <h3 style="text-align:center;color:#222;font-size:13px;" id="location" class="location"></h3>
+                    <div class="col-md-6 ">
+                        <h3 style="border-right:1px solid #999;text-align:center;color:#222;font-size:13px;" class="Name">Followers</h3>
+
+                        <div class="pfblock-line" style="margin:5px auto;"></div>
+                        <h4 style="margin-top:10px;font-size: 30px;text-align: center;" id="follower"> </h4>
+                    </div>
+                  <div class="col-md-6 ">
+                        <h3 style="text-align:center;color:#222;font-size:13px;" class="Name">Following</h3>
+                        <div class="pfblock-line" style="margin:5px auto;"></div>
+                        <h4 style="margin-top:10px;font-size: 30px;text-align: center;" id="following"> </h4>
+                    </div>
+              </div>
+		</div>
+		<div class="col-md-7 col-md-offset-1 panel panel-primary twit_block" style="color:#222;border:1px solid #bbb;border-radius:0px;">
+			  <div class="panel-body">
+	                <div class="col-md-6 ">
+                        <h3 style="border-right:1px solid #999;text-align:center;color:#222;font-size:13px;" class="Name">Interested in topics like</h3>
+                        <canvas id="hear" width="200" height="200"></canvas>
+                    </div>
+                    <div class="col-md-6 ">
+                        <h3 style="text-align:center;color:#222;font-size:13px;" class="Name">Likes talking about</h3>
+                        <canvas id="talk" width="200" height="200"></canvas>
+                    </div>
+			  </div>
+	    </div>
+		</div>
+
+		</section>
+        <section id="network" class="hidden-xs pfblock" style="padding-top:60px;">
+		<div class="row" style="margin:0px; !important">
+        		<div class="col-md-12 panel panel-primary twit_block" style="color:#222;border:1px solid #bbb;border-radius:0px;">
+			  <div class="panel-body">
+                 <h3 style="text-align: center;color:#999;font-size: 15px;">User Network Graph : By Interest</h3>
+			        <div class="pfblock-line" style="margin:5px auto;"></div>
+			      <div id="canvas" style="height: 800px; width: 900px;"></div>
+              </div>
+
+			</div>
+
+			</div>
+		</div>
+		</section>
+
+		<section id="interests" class="pfblock" style="padding-top: 60px;">
+        <div class="col-md-10 col-md-offset-1" style="margin-bottom:3%;color:#222;border:1px solid #bbb;border-radius:0px;">
+            <h3 class="top-quotes" style="text-align:center;color:#999;font-size: 15px; padding-top: 10px;">Top 5 Tweets by Me</h3>
+            <div class="pfblock-line" style="margin:5px auto;"></div>
+        <div class="list-group" style="padding-top: 3%;font-size:20px;" >
+            <a href="#"  class="list-group-item"><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span style="padding-left:10px;" id="tweet1"></span></a>
+            <a href="#" class="list-group-item"><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span style="padding-left:10px;" id="tweet2"></span></a>
+            <a href="#" class="list-group-item"><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span style="padding-left:10px;" id="tweet3"></span></a>
+            <a href="#"  class="list-group-item"><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span style="padding-left:10px;" id="tweet4"></span></a>
+            <a href="#"  class="list-group-item"><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span style="padding-left:10px;" id="tweet5"></span></a>
+        </div>
+        </div>
+		<div class="row" style="margin:0px; !important">
+			
+		<div class="col-md-5 col-md-offset-1 panel panel-primary twit_block" style="color:#222;border:1px solid #bbb;border-radius:0px;">
+			  <div class="panel-body">
+				    <div class="col-md-6 ">
+                        <h3 style="border-right:1px solid #999;text-align:center;color:#222;font-size:13px;" class="Name">Likely Sleeping Hours</h3>
+                        <center><h3><img style="height:50px;width:50px;margin-top:10px;" src="{% static 'assets/images/moon.png' %}" alt="Twitter glph"></img></h3></center>
+                        <div class="pfblock-line" style="margin:5px auto;"></div>
+                        <h4 style="margin-top:10px;font-size: 20px;text-align: center;"> <span class="start-sleep"></span>:00 - <span class="stop-sleep"></span> :00 hours </h4>
+                    </div>
+                    <div class="col-md-6 ">
+                        <h3 style="text-align:center;color:#222;font-size:13px;" class="Name">Most Active Hours</h3>
+                       <center> <h3><img style="margin-top:8px;height:50px;width:50px;" src="{% static 'assets/images/twitter-glyph.png' %}" alt="Twitter glph"></img></h3></center>
+                        <div class="pfblock-line" style="margin:5px auto;margin-top:10px;"></div>
+                        <h4 style="margin-top:10px;font-size: 20px;text-align: center;"> <span class="start-tweet"></span>:00 - <span class="stop-tweet"></span> :00 hours </h4>
+                    </div>
+			  </div>
+
+
+			</div>
+            <div class="col-md-4 col-md-offset-1 panel panel-primary twit_block" style="color:#222;border:1px solid #bbb;border-radius:0px;">
+              <div class="panel-body">
+                  <div class="col-md-6 ">
+                        <h3 style="border-right:1px solid #999;text-align:center;color:#222;font-size:13px;" class="Name">Retweets</h3>
+                      <center> <h3><img style="margin-top:8px;height:50px;width:50px;" src="{% static 'assets/images/retweet.png' %}" alt="Twitter glph"></img></h3></center>
+                        <div class="pfblock-line" style="margin:5px auto;"></div>
+                        <h4 style="margin-top:10px;font-size: 30px;text-align: center;" id="retweet"> </h4>
+                    </div>
+                  <div class="col-md-6 ">
+                        <h3 style="text-align:center;color:#222;font-size:13px;" class="Name">Popularity</h3>
+                      <center><span class="glyphicon glyphicon-heart" aria-hidden="true" style="font-size:50px"></span>"</center>
+                        <div class="pfblock-line" style="margin:5px auto;"></div>
+                        <h4 style="margin-top:10px;font-size: 30px;text-align: center;" id="reputation"> </h4>
+                    </div>
+              </div>
+
+            </div>
+
+		</div>
+		</section>
+
+
+			
+
+
+		<section id="features" class="pfblock hidden-xs">
+		<div class="row" style="margin:0px; !important">
+			<div class=" col-md-10 col-md-offset-1 panel panel-primary twit_block" style="color:#222;border:1px solid #bbb;border-radius:0px;">
+			  <div class="panel-body">
+				    <div class="">
+                        <h3 style="text-align:center;color:#999;font-size:13px;" class="Name">Happiness index over last 50 Tweets</h3>
+                    </div>
+                <center>  <canvas id="mood" width="800" height="300"></canvas>  </center>
+
+			  </div>
+			  <div class="pfblock-line" style="margin:5px auto;"></div>
+			</div>
+
+		</div>
+		</section>
+
+		<section id="timeline" class="pfblock">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <h3 style="text-align:center;color:#999;font-size:25px;" class="Name">Network Reach</h3>
+                    <div class="pfblock-line" style="margin:5px auto;"></div>
+                    <div id="map_canvas" style="width: 100%; height: 500px;"></div>
+                </div>
+            </div>
+		<!--<div class="row" style="margin:0px; !important">
+			<div class="col-md-12 panel panel-primary twit_block" style="color:#222;border:1px solid #bbb;border-radius:0px;">
+				<nav class="navbar navbar-findcond">
+	    		
+				<div class="navbar-collapse" id="navbar">
+					<ul class="nav navbar-nav">
+						<li class="active"><a onclick="showNetwork('prof');" href="#">By Profession <span class="sr-only">(current)</span></a></li>
+						<li ><a onclick="showNetwork('int');" href="#">By Interest <span class="sr-only">(current)</span></a></li>
+						<li ><a onclick="showNetwork('prox');" href="#">By Proximity <span class="sr-only">(current)</span></a></li>
+					</ul>
+				</div>
+				
+				</nav>
+
+				<div id="prof">
+					Graph Profession
+				</div>
+				<div id="int" style="display:none">
+					Graph Interest
+				</div>
+				<div id="prox" style="display:none">
+					Graph Proximity
+				</div>
+			</div>
+		</div>-->
+		</section>
+		
+	</div><!--conatiner-->
+
+
+
+
+<!-- Javascript files -->
+
+	<script src="{% static 'assets/js/jquery-1.11.1.min.js' %}"></script>
+	<script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'assets/js/jquery.parallax-1.1.3.js' %}"></script>
+	<script src="{% static 'assets/js/imagesloaded.pkgd.js' %}"></script>
+	<script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+	<script src="{% static 'assets/js/smoothscroll.js' %}"></script>
+	<script src="{% static 'assets/js/wow.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.easypiechart.js' %}"></script>
+    <script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.cbpQTRotator.js' %}"></script>
+	<script src="{% static 'assets/js/custom.js' %}"></script>
+    <script src="{% static 'assets/js/canvasjs.min.js' %}"></script>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
+
+    <!-- SCROLLING SCRIPTS PLUGIN  -->
+
+	<script type="text/javascript">
+
+    function loadMap(){
+        var map;
+        var elevator;
+        var myOptions = {
+            zoom: 1,
+            center: new google.maps.LatLng(0, 0),
+            mapTypeId: 'terrain'
+        };
+        map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+
+        usernamex = $("#username").html().trim();
+        var url = "/api/get/get_location/?username=" + usernamex;
+        $.get(url, function( data ) {
+
+        var addresses = JSON.parse(data);
+
+       // console.log(addresses);
+
+
+        for (var x = 0; x < addresses.length; x++) {
+
+            if(!addresses[x])
+            {
+                continue;
+            }
+
+            $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
+                var p = data.results[0].geometry.location
+                var latlng = new google.maps.LatLng(p.lat, p.lng);
+                new google.maps.Marker({
+                    position: latlng,
+                    map: map,
+                    scrollwheel: false,
+                    navigationControl: false,
+                    mapTypeControl: false,
+                    scaleControl: false,
+                    draggable: false
+                });
+
+            });
+        }
+
+    });
+
+    }
+
+	function showNetwork(str)
+	{
+		if(str=="prof")
+		{
+			$('#'+str).css({"display":"block"});
+			$(this).css({"border-color":"#222 !important"});
+			$('#int').css({"display":"none"});
+			$('#prox').css({"display":"none"});
+
+		}
+		else if(str=="int")
+		{
+			$(this).css({"border-color":"#222 !important"});
+			$('#'+str).css({"display":"block"});
+			$('#prof').css({"display":"none"});
+			$('#prox').css({"display":"none"});
+		}
+		else
+		{
+			$(this).css({"border-color":"#222 !important"});
+			$('#'+str).css({"display":"block"});
+			$('#int').css({"display":"none"});
+			$('#prof').css({"display":"none"});
+		}
+	}
+
+
+    function sentiment() {
+
+    usernamex = $("#username").html().trim();
+
+
+
+    var url = "/api/get/sentiment/?username=" + usernamex;
+
+    $.get(url, function( data ) {
+
+     jsond = JSON.parse(data);
+
+     var dataarrp = []
+     var dataarrn = []
+
+     for(i =0; i<jsond.length; i++)
+     {
+         a=jsond[i][0]
+
+         while(a<0.1)
+         {
+             a=a*3;
+         }
+         dataarrp.push(a);
+         dataarrn.push(jsond[i][1]+Math.random());
+     }
+
+     var ctx = $("#mood").get(0).getContext("2d");
+
+     var data = {
+    labels: [],
+    datasets: [
+        {
+            label: "Positive",
+            fillColor: "rgba(151,187,205,0.5)",
+            strokeColor: "rgba(151,187,205,0.8)",
+            pointColor: "rgba(151,187,205,0.8)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: dataarrp
+        }
+    ]
+    };
+
+    var myLineChart = new Chart(ctx).Line(data);
+
+    });
+
+    }
+
+    function topics_hear_about() {
+
+    usernamex = $("#username").html().trim();
+
+    var url = "/api/get/topics_hear_about/?username=" + usernamex;
+    $.get(url, function( data ) {
+     var jsond = JSON.parse(data);
+
+
+    var ctx = $("#hear").get(0).getContext("2d");
+
+    var jsd = [];
+    var valar= [];
+
+    for(i = 0; i< jsond.length; i++)
+    {
+        jsd.push(jsond[i][0]);
+        valar.push(jsond[i][1]);
+    }
+
+    var data = {
+    labels: jsd,
+    datasets: [
+        {
+            label: "Topics Discovery",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "green",
+            data: valar
+        }
+    ]
+};
+
+    var hearChart = new Chart(ctx).Radar(data);
+
+
+    });
+
+    };
+
+    function topics_talk_about() {
+
+    usernamex = $("#username").html().trim();
+
+    var url = "/api/get/topics_talk_about/?username=" + usernamex;
+    $.get(url, function( data ) {
+     var jsond = JSON.parse(data);
+
+
+     var ctx = $("#talk").get(0).getContext("2d");
+
+    var jsd = [];
+    var valar= [];
+
+    for(i = 0; i< jsond.length; i++)
+    {
+        jsd.push(jsond[i][0]);
+        valar.push(jsond[i][1]);
+    }
+
+    var data = {
+    labels: jsd,
+    datasets: [
+        {
+            label: "Topics Discovery",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: valar
+        }
+    ]
+};
+
+    var hearChart = new Chart(ctx).Radar(data);
+
+    });
+
+    };
+
+    function tweet_pattern() {
+
+    usernamex = $("#username").html().trim();
+
+    var url = "/api/get/sleep_pattern/?username=" + usernamex;
+    $.get(url, function( data ) {
+     jsond = JSON.parse(data);
+
+     startHourTweet = jsond[0]['likely'][0];
+     startHourTweetAngle = ((startHourTweet/24))*360;
+     startHourSleep = jsond[0]['sleep'][0];
+     startHourSleepAngle = ((startHourSleep/24))*360;
+
+     $('.start-sleep').text(parseInt(startHourSleep));
+     $('.stop-sleep').text((parseInt(startHourSleep)+8)%24);
+     $('.start-tweet').text(parseInt(startHourTweet));
+     $('.stop-tweet').text((parseInt(startHourTweet)+5)%24);
+
+    });
+    }
+
+    function top_tweets() {
+
+    usernamex = $("#username").html().trim();
+
+    var url = "/api/get/top_tweets/?username=" + usernamex;
+    $.get(url, function( data ) {
+     jsond = JSON.parse(data);
+
+
+        for(var i=0;i<jsond.length;i++)
+        {
+            var tweet=jsond[i][0];
+            var retimes=jsond[i][1];
+            $('#top'+parseInt(i+1)).text(tweet);
+            $('#tweet'+parseInt(i+1)).text(tweet);
+            $('#retimes'+parseInt(i+1)).text("Number of time retweeted: "+retimes);
+        }
+    });
+    }
+
+    function get_profile()
+    {
+    usernamex = $("#username").html().trim();
+
+    var url = "/api/get/get_profile/?username=" + usernamex;
+    $.get(url, function( data ) {
+     jsond = JSON.parse(data);
+        var screen_name=jsond['screen_name'];
+        var name=jsond['name'];
+        var image_url=jsond['profile_image_url_https'];
+        var location=jsond['location'];
+        var banner=jsond['profile_banner_url'];
+        var statuses_count=jsond['statuses_count'];
+        var friends=jsond['friends_count'];
+        var followers=jsond['followers_count'];
+        var reputation=Math.round((followers/(followers+friends))*100);
+        $('#profile_url').attr('src',image_url);
+        $('#screen_name').text(screen_name);
+        $('#name').text(name);
+        $('#location').text(location);
+        $('#banner').attr('background-image','url(banner)');
+        $('#retweet').text(statuses_count);
+        $('#reputation').text(reputation);
+        $('#follower').text(followers);
+        $('#following').text(friends);
+
+
+    });
+
+    }
+
+    $(document).ready(function(){
+       get_profile();
+        topics_hear_about();
+        topics_talk_about();
+
+        top_tweets();
+        tweet_pattern();
+        sentiment();
+        loadMap();
+    });
+
+	</script>
+</body>
+
+</html>

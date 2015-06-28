@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<style>
+		@font-face {
+    font-family: 'Indie';
+    src:url('IndieFlower.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+	}
+    	@font-face {
+    font-family: 'myriad';
+    src:url('IndieFlower.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+	}
+	</style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Twitter Kundli | Login</title>
+
+	<!-- CSS -->
+	<link href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+	<link href="{% static 'assets/css/font-awesome.min.css' %}" rel="stylesheet" media="screen">
+	<link href="{% static 'assets/css/simple-line-icons.css' %}" rel="stylesheet" media="screen">
+	<link href="{% static 'assets/css/animate.css' %}" rel="stylesheet">
+    
+	<!-- Custom styles CSS -->
+	<link href="{% static 'assets/css/style.css' %}" rel="stylesheet" media="screen">
+    
+    <script src="{% static 'assets/js/modernizr.custom.js' %}"></script>
+       
+</head>
+<body style="background-image:url('assets/images/ps_neutral.png');">
+	<!-- Preloader -->
+
+	<div id="preloader">
+		<div id="status"></div>
+	</div>
+	
+	<!-- Home start -->
+
+	<section id="home" class="pfblock-image screen-height">
+        <div class="home-overlay"></div>
+		<div class="intro" style="z-index:1000;">
+			<div>
+                <div><center><img class="img-responsive img-thumbnail" alt="Twitter Kundli" src="{% static 'assets/images/twitter-logo.png' %}" style="height:100px;width:100px;"></img></center></div>
+				<div class="start" style="font-size: 50px;font-weight: bolder;font-family: myriad;">Twitter Kundli</div>
+
+				<div class="start">By HoneyComb</div>
+			</div>
+
+		</div>
+		<a href="#services">
+			<div class="scroll-down">
+            	<span>
+                	<i class="fa fa-angle-down fa-2x"></i>
+            	</span>
+			</div>
+        	</a>
+		<div class="row">
+		
+    	</div>
+	</section>
+
+	<!-- Home end -->
+<!-- Text start -->
+
+	<div style="background-image:url('assets/images/ps_neutral.png');" id="services">
+	<div class="container">
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3">
+			<div class="pfblock-header" style="margin:0px;">
+				<h2 class="pfblock-title" style="color:#222;margin:0px;font-size:20px;">Enter a Twitter handle</h2>
+				<div class="pfblock-line" style="margin:5px auto;"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" style="padding-top:2%;">
+		<form id="contact-form" role="form">
+		
+		<div class="col-sm-5 col-sm-offset-1">
+				<div class="form-group wow fadeInUp">
+					<label class="sr-only" for="c_name">@aliabhat</label>
+					<input type="text" class="form-control" id="c_name" style="display:inline !important;" name="c_name" placeholder="Name">
+				</div>
+		</div>
+		<center><button type="submit" class="btn btn-lg wow fadeInUp" style="color:#999;" onclick="getUser()" data-wow-delay=".3s">Find Your Kundli</button></center>
+		</div>
+		</form>
+	</div><!-- .row -->
+	</div>
+	</div>
+
+<!-- Text end -->
+
+
+<!-- Javascript files -->
+
+	<script src="{% static 'assets/js/jquery-1.11.1.min.js' %}"></script>
+	<script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'assets/js/jquery.parallax-1.1.3.js' %}"></script>
+	<script src="{% static 'assets/js/imagesloaded.pkgd.js' %}"></script>
+	<script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+	<script src="{% static 'assets/js/smoothscroll.js' %}"></script>
+	<script src="{% static 'assets/js/wow.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.easypiechart.js' %}"></script>
+    <script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.cbpQTRotator.js' %}"></script>
+	<script src="{% static 'assets/js/custom.js' %}"></script>
+
+
+	<script type="text/javascript">
+
+	function getUser()
+	{
+  //window.alert(str);
+	   var str=document.getElementById('c_name').value;
+	   window.location.href = '/home?username='+str;
+	   /*  
+	  if (str=="") {
+	    document.getElementById("txtHint").innerHTML="";
+	    return;
+	  } 
+	   
+	  if (window.XMLHttpRequest) {
+	    // code for IE7+, Firefox, Chrome, Opera, Safari
+	    xmlhttp=new XMLHttpRequest();
+	  } else { // code for IE6, IE5
+	    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  xmlhttp.onreadystatechange=function() {
+	    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+	      document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+	    }
+	  }
+	  xmlhttp.open("GET","getuser.php?q="+str,true);
+	  xmlhttp.send();
+	*/
+	}
+	</script>
+</body>
+
+</html>
