@@ -72,7 +72,7 @@ nav.navbar-findcond span.badge.new { background: rgba(255, 0, 0, 0.8); color: #f
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Twitter Kundli | Login</title>
+	<title>Twitter Kundli | Kundli</title>
 
 	<!-- CSS -->
 <!-- CSS -->
@@ -80,7 +80,7 @@ nav.navbar-findcond span.badge.new { background: rgba(255, 0, 0, 0.8); color: #f
 	<link href="{% static 'assets/css/font-awesome.min.css' %}" rel="stylesheet" media="screen">
 	<link href="{% static 'assets/css/simple-line-icons.css' %}" rel="stylesheet" media="screen">
 	<link href="{% static 'assets/css/animate.css' %}" rel="stylesheet">
-
+    <link rel="icon" href="{% static 'http://www.twitter.com/favicon.ico' %}" type="image/x-icon"/>
 	<!-- Custom styles CSS -->
 	<link href="{% static 'assets/css/style.css' %}" rel="stylesheet" media="screen">
     <script src="http://maps.googleapis.com/maps/api/js"></script>
@@ -116,17 +116,17 @@ nav.navbar-findcond span.badge.new { background: rgba(255, 0, 0, 0.8); color: #f
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="index.html" style="font-family:myriad;">Twitter Kundli</a>
+					<a class="navbar-brand" href="/" style="font-family:myriad;">Twitter Kundli</a>
 				</div>
 
 				<div class="collapse navbar-collapse" id="custom-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#zzz"></a></li>
 						<li><a href="#services">Home</a></li>
-                        <li><a href="#network">Network</a></li>
                         <li><a href="#interests">Interests</a></li>
                         <li><a href="#features">Features</a></li>
-						<li><a href="#timeline">Timeline</a></li>
+                        <li><a href="#network">Network</a></li>
+						<li><a href="#timeline">Geo Reach</a></li>
 					</ul>
 				</div>
 
@@ -225,21 +225,6 @@ nav.navbar-findcond span.badge.new { background: rgba(255, 0, 0, 0.8); color: #f
 	    </div>
 		</div>
 
-		</section>
-        <section id="network" class="hidden-xs pfblock" style="padding-top:60px;">
-		<div class="row" style="margin:0px; !important">
-        		<div class="col-md-12 panel panel-primary twit_block" style="color:#222;border:1px solid #bbb;border-radius:0px;">
-			  <div class="panel-body">
-                 <h3 style="text-align: center;color:#999;font-size: 15px;">User Network Graph : By Interest</h3>
-			        <div class="pfblock-line" style="margin:5px auto;"></div>
-			      <div id="canvas" style="height: 800px; width: 900px;"></div>
-              </div>
-
-			</div>
-
-			</div>
-		</div>
-		</section>
 
 		<section id="interests" class="pfblock" style="padding-top: 60px;">
         <div class="col-md-10 col-md-offset-1" style="margin-bottom:3%;color:#222;border:1px solid #bbb;border-radius:0px;">
@@ -311,6 +296,23 @@ nav.navbar-findcond span.badge.new { background: rgba(255, 0, 0, 0.8); color: #f
 			  <div class="pfblock-line" style="margin:5px auto;"></div>
 			</div>
 
+		</div>
+		</section>
+
+
+		</section>
+        <section id="network" class="hidden-xs pfblock" style="padding-top:60px;">
+		<div class="row" style="margin:0px; !important">
+        		<div class="col-md-12 panel panel-primary twit_block" style="color:#222;border:1px solid #bbb;border-radius:0px;">
+			  <div class="panel-body">
+                 <h3 style="text-align: center;color:#999;font-size: 15px;">User Network Graph : By Interest</h3>
+			        <div class="pfblock-line" style="margin:5px auto;"></div>
+			      <div id="canvas" style="height: 800px; width: 900px;"></div>
+              </div>
+
+			</div>
+
+			</div>
 		</div>
 		</section>
 
@@ -593,6 +595,7 @@ nav.navbar-findcond span.badge.new { background: rgba(255, 0, 0, 0.8); color: #f
      jsond = JSON.parse(data);
 
      startHourTweet = jsond[0]['likely'][0];
+     
      startHourTweetAngle = ((startHourTweet/24))*360;
      startHourSleep = jsond[0]['sleep'][0];
      startHourSleepAngle = ((startHourSleep/24))*360;
@@ -657,11 +660,10 @@ nav.navbar-findcond span.badge.new { background: rgba(255, 0, 0, 0.8); color: #f
     }
 
     $(document).ready(function(){
-       get_profile();
+        get_profile();
         topics_hear_about();
         topics_talk_about();
-
-        top_tweets();
+        top_tweets(); 
         tweet_pattern();
         sentiment();
         loadMap();

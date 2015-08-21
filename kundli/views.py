@@ -40,13 +40,29 @@ def home(request):
 
 TIMELINE_URI = 'https://api.twitter.com/1.1/statuses/user_timeline.json'
 
+def init_api(request):
+    if request.GET:
+        username = request.GET.get('username')
+
+        URI_1 = 'https://api.twitter.com/1.1/statuses/user_timeline.json'
+        URI_2 = 'https://api.twitter.com/1.1/statuses/home_timeline.json'
+        URI_4 = 'https://api.twitter.com/1.1/friends/ids.json'
+        URI_5 = 'https://api.twitter.com/1.1/followers/ids.json'
+
+KEY1 = ['KQRNLy8L4t8dQ4Loay0N1cGJV','lFi8oSsnR2NsHZUkArGFNx4IMa2unFTTxJm4zRWkC7fd9WlKKr','837804571-OORMT78jbTrbrgiLk2HYKIWyEblUuZN94PWub1pN','QMB9fvepUud1p8ykK68Ye3O0WfSzWeGfn9WQJbWhqJu08']
+KEY2 = ['0DiP1RTBPv6BTE36YsIUHQ','a56Wr9T6EvuaJvBQkaYyJZhq2qTaGfwl1l8O1a2P0uI','17062577-JEXVIHGYcLjsm339u7Kb0GhTSBVJMn93Hxqh0BNRo','OBfJSCWDXmSUGkxKWfbU95e67eAvfSWEs904rNb3voKpP']
+KEY3 = ['x64DkaSQAq3PqWlD2j2CBA','4f2Vf208osnvHE1TDfE7RXni2Ip6fQboOudHdTtE','17062577-2KZL6ZlRQ7S0nOS7INZj39j8HrtUjQrs3vt4PmATQ','8iegmh94XYt6bInFqMnP5ULIhP15vwsXN758TpaaVci9z']
+KEY4 = ['njtMWSxd6WgYFJWrgYW6Kg','z5upcGYZeKYXi5VkttKuymSS2jI7wf7mVL1qRm050A','430556882-wGpXEPfWjRKzxGioJkMkdcZErC6IwLKqDSue51Bo','IDhIQjkQ3Vwlq3DtcuuZFdYb5GjKTbHULkK5n5ZtCPQy6']
+KEY5 = ['hMNKDI1bkd8DRiCk3XbT8ly6L','2aFi0NyY01hHjr290mAUIwMzvPDH2idl55ebUuxXF6HGfqgKMQ','120086028-c0xEf3rTZLkawwG69CnTanzDY1pLXCwhN1FEKqX6','QoFwlRFcWzouoh0CI4VOAIZugCvl3IhOMQNGQMBfhWFAR']
+KEY6 = ['Upwy7s3ZALjNiViX3g6NzNcYu','FlqR53ljbAorWsg92JH8CT9qIu1bJK60KxW7SLThTqSXwXybTO', '3258604662-7AapfCkY4kMDBCTr7jUtJSqLc9AxRqliZ2zPBtO','gLQBUxIqcecE12pDSrekuO0ZFWZc57t3yMtSPikVQsRI5']
+KEY7 = ['t29n0eB0sdPZXykSFEjLGw','Ok6WXoMovlHCMCQgbBdIbjAyaRlZz1qdslthlAhXnpY','17062577-AwYInjHlxpXvmq4PTTX5VPt6GX0wpB7Dg5HASTYBN','uVarPsESzkOU2snUdey67S1fqhkVREa71T5zi4ltv3uH9']
 
 def sentiment(request):
     if request.GET:
         username = request.GET.get('username')
-        payload = {'screen_name' : username, 'count' : 15}
-        auth = OAuth1(API_ID, API_SECRET,
-                  OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
+        payload = {'screen_name' : username, 'count' : 25}
+        auth = OAuth1(KEY2[0], KEY2[1],
+                  KEY2[2], KEY2[3])
         r = requests.get(TIMELINE_URI,params=payload, auth=auth)
         abc = r.json()
         final_scores = []
@@ -68,8 +84,8 @@ def topics_hear_about(request):
 
         payload = {'screen_name' : username, 'count' : MEGA_COUNT}
 
-        auth = OAuth1(API_ID, API_SECRET,
-                  OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
+        auth = OAuth1(KEY2[0], KEY2[1],
+                  KEY2[2], KEY2[3])
 
         r = requests.get(NEW_URI,params=payload, auth=auth)
 
@@ -92,8 +108,8 @@ def topics(request):
     if request.GET:
         username = request.GET.get('username')
         payload = {'screen_name' : username, 'count' : MEGA_COUNT}
-        auth = OAuth1(API_ID, API_SECRET,
-                  OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
+        auth = OAuth1(KEY3[0], KEY3[1],
+                  KEY3[2], KEY3[3])
 
         r = requests.get(TIMELINE_URI,params=payload, auth=auth)
 
@@ -116,8 +132,8 @@ def sleep_pattern(request):
     if request.GET:
         username = request.GET.get('username')
         payload = {'screen_name' : username, 'count' : MEGA_COUNT}
-        auth = OAuth1(API_ID, API_SECRET,
-                  OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
+        auth = OAuth1(KEY4[0], KEY4[1],
+                  KEY4[2], KEY4[3])
 
         r = requests.get(TIMELINE_URI,params=payload, auth=auth)
         tweets = r.json()
@@ -163,9 +179,9 @@ def cp(p):
 def top_tweets(request):
     if request.GET:
         username = request.GET.get('username')
-        payload = {'screen_name' : username, 'count' : MEGA_COUNT}
-        auth = OAuth1(API_ID, API_SECRET,
-                  OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
+        payload = {'screen_name' : username, 'count' : 25}
+        auth = OAuth1(KEY1[0], KEY1[1],
+                  KEY1[2], KEY1[3])
 
         r = requests.get(TIMELINE_URI,params=payload, auth=auth)
         tweets = r.json()
@@ -195,8 +211,8 @@ def get_profile(request):
     if request.GET:
         username = request.GET.get('username')
         payload = {'screen_name' : username}
-        auth = OAuth1(API_ID_2, API_SECRET_2,
-                  OAUTH_TOKEN_2, OAUTH_TOKEN_SECRET_2)
+        auth = OAuth1(KEY1[0], KEY1[1],
+                  KEY1[2], KEY1[3])
 
         K_URI = "https://api.twitter.com/1.1/users/show.json"
 
@@ -212,8 +228,8 @@ def get_interest(request):
         username = request.GET.get('username')
 
         payload = {'screen_name' : username,'count': MEGA_COUNT}
-        auth = OAuth1(API_ID, API_SECRET,
-                  OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
+        auth = OAuth1(KEY5[0], KEY5[1],
+                  KEY5[2], KEY5[3])
         r = requests.get(P_URI,params=payload, auth=auth)
 
         abc = r.json()
@@ -247,9 +263,8 @@ def get_graph(request):
     if request.GET:
 
         username = request.GET.get('username')
-        payload = {'screen_name' : username,'count': MEGA_COUNT}
-        auth = OAuth1(API_ID, API_SECRET,
-                  OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
+        payload = {'screen_name' : username,'count': 20}
+        auth = OAuth1(KEY6[0], KEY6[1], KEY6[2], KEY6[3])
 
         r = requests.get(URILL,params=payload, auth=auth)
 
@@ -305,8 +320,8 @@ def get_location(request):
     if request.GET:
         username = request.GET.get('username')
         payload = {'screen_name' : username,'count': 15}
-        auth = OAuth1(API_ID_2, API_SECRET_2,
-                  OAUTH_TOKEN_2, OAUTH_TOKEN_SECRET_2)
+        auth = OAuth1(KEY7[0], KEY7[1],
+                  KEY7[2], KEY7[3])
         r = requests.get(URIX,params=payload, auth=auth)
 
         abc = r.json()
@@ -315,7 +330,7 @@ def get_location(request):
 
         location = []
 
-        for i in users:
+        for i in users[:15]:
             url = "https://api.twitter.com/1.1/users/show.json"
             payload = {'user_id':i}
 
